@@ -2,26 +2,33 @@ import React, { Component } from "react";
 import GeneralInfo from "./GeneralInfo";
 import EducationInfo from "./EducationInfo";
 import PracticalInfo from "./PracticalInfo";
+import RenderCV from "./RenderCV";
 
 class App extends Component {
 	constructor() {
 		super();
 
-		this.state = {};
+		this.state = {
+			full_name: "",
+			email: "",
+			phone: "",
+			school_name: "",
+			study_tile: "",
+			date: "",
+			company_name: "",
+			position_title: "",
+			tasks: "",
+			date_from: "",
+			date_until: "",
+		};
 
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(event) {
 		this.setState({
 			[event.target.id]: event.target.value
 		});
-		console.log(this.state);
-	}
-
-	handleSubmit() {
-		
 	}
 
 	render() {
@@ -33,11 +40,7 @@ class App extends Component {
 				<br></br>
 				<PracticalInfo onChange={this.handleChange}/>
 				<br></br>
-
-				<div className="buttons">
-					<button type="button">Edit</button>
-					<button onClick={this.handleSubmit} type="button">Submit</button>
-				</div>
+				<RenderCV state={this.state}/>
 			</div>
 		);
 	}
