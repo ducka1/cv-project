@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 class PracticalInfo extends Component {
-	constructor() {
-		super();
-	}
-
 	render() {
 		return (
 			<div className="section">
