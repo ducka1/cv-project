@@ -1,49 +1,41 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import GeneralInfo from "./GeneralInfo";
 import EducationInfo from "./EducationInfo";
 import PracticalInfo from "./PracticalInfo";
 import RenderCV from "./RenderCV";
 
-class App extends Component {
-	constructor() {
-		super();
+function App() {
+  const [info, setInfo] = useState({
+    full_name: "",
+    email: "",
+    phone: "",
+    school_name: "",
+    study_tile: "",
+    date: "",
+    company_name: "",
+    position_title: "",
+    tasks: "",
+    date_from: "",
+    date_until: "",
+  });
 
-		this.state = {
-			full_name: "",
-			email: "",
-			phone: "",
-			school_name: "",
-			study_tile: "",
-			date: "",
-			company_name: "",
-			position_title: "",
-			tasks: "",
-			date_from: "",
-			date_until: "",
-		};
-
-		this.handleChange = this.handleChange.bind(this);
+	const handleChange = (event) => {
+    setInfo({
+      [event.target.id]: event.target.value
+    });
 	}
 
-	handleChange(event) {
-		this.setState({
-			[event.target.id]: event.target.value
-		});
-	}
-
-	render() {
-		return (
-			<div>
-				<GeneralInfo onChange={this.handleChange}/>
-				<br></br>
-				<EducationInfo onChange={this.handleChange}/>
-				<br></br>
-				<PracticalInfo onChange={this.handleChange}/>
-				<br></br>
-				<RenderCV state={this.state}/>
-			</div>
-		);
-	}
+  return (
+    <div>
+      <GeneralInfo onChange={handleChange}/>
+      <br></br>
+      <EducationInfo onChange={handleChange}/>
+      <br></br>
+      <PracticalInfo onChange={handleChange}/>
+      <br></br>
+      <RenderCV state={info}/>
+    </div>
+  );
 }
 
 export default App;
